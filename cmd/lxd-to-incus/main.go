@@ -651,10 +651,7 @@ Instead this tool will be providing specific commands for each of the servers.
 		return fmt.Errorf("Failed to remove %q: %w", targetPaths.Cache, err)
 	}
 
-	err = os.RemoveAll(targetPaths.Daemon)
-	if err != nil && !os.IsNotExist(err) {
-		return fmt.Errorf("Failed to remove %q: %w", targetPaths.Daemon, err)
-	}
+	_ = os.RemoveAll(targetPaths.Daemon)
 
 	// Migrate data.
 	fmt.Println("=> Migrating the data")
